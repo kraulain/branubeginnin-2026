@@ -1072,6 +1072,68 @@
       color: var(--ivory);
     }
 
+
+    /* ═══════════════════════════════════════
+       COUPLE ILLUSTRATIONS
+    ═══════════════════════════════════════ */
+    .persona {
+      display: block;
+      width: auto;
+      pointer-events: none;
+      user-select: none;
+      transform-origin: 50% 100%;
+      animation: persona-sway 6s ease-in-out infinite;
+    }
+    @keyframes persona-sway {
+      0%, 100% { transform: rotate(-1.2deg); }
+      50%      { transform: rotate(1.2deg); }
+    }
+    @keyframes persona-bob {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
+    /* a figure standing on the top edge of a card */
+    .has-persona { margin-top: 172px; }
+    .persona-top {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% - 6px);
+      height: 150px;
+      margin-left: -60px;          /* overridden per image below */
+    }
+    .persona-top.trad  { margin-left: -44px; }
+    .persona-top.dance { margin-left: -50px; animation-duration: 4.5s; }
+    .persona-top.gift  { margin-left: -48px; animation-delay: -2s; }
+
+    .scene-vignette {
+      display: block;
+      width: min(560px, 100%);
+      height: auto;
+      margin: 44px auto 0;
+      mix-blend-mode: multiply;
+    }
+
+    .persona-wave {
+      height: 160px;
+      margin: 0 auto 18px;
+      animation: persona-bob 3.2s ease-in-out infinite;
+    }
+    .persona-dress {
+      height: 250px;
+      margin: 0 auto 40px;
+      animation-duration: 7s;
+    }
+    .persona-letter {
+      height: 170px;
+      margin: 0 auto 28px;
+      animation: persona-bob 3.6s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .persona { animation: none; }
+    }
+
     /* ═══════════════════════════════════════
        RESPONSIVE
     ═══════════════════════════════════════ */
@@ -1175,11 +1237,14 @@
       joyfully invite you to come celebrate<br>their marriage.
     </p>
 
+    <img class="scene-vignette reveal" src="img/couple/scene.webp" width="1120" height="625" loading="lazy" alt="">
+
     <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
   </section>
 
   <!-- ── COUNTDOWN ── -->
   <section id="countdown" class="paper-grain">
+    <img class="persona persona-wave reveal" src="img/couple/wave.webp" width="180" height="340" loading="lazy" alt="">
     <p class="cd-script reveal" data-i18n="cd.script">See you in…</p>
     <p class="cd-sub reveal" data-i18n="cd.sub">until our lifetime together begins</p>
     <div class="cd-grid reveal">
@@ -1211,7 +1276,8 @@
 
     <div class="event-cards">
 
-      <div class="event-card reveal">
+      <div class="event-card has-persona reveal">
+        <img class="persona persona-top trad" src="img/couple/trad.webp" width="186" height="320" loading="lazy" alt="">
         <span class="event-pill" data-i18n="ev.d1.pill">Day One · Traditional Wedding</span>
         <div class="event-day" data-i18n="ev.d1.day">Wednesday, 16th December 2026</div>
         <div class="event-info" data-i18n="ev.d1.info">
@@ -1225,7 +1291,8 @@
         </div>
       </div>
 
-      <div class="event-card reveal">
+      <div class="event-card has-persona reveal">
+        <img class="persona persona-top dance" src="img/couple/dance.webp" width="215" height="320" loading="lazy" alt="">
         <span class="event-pill" data-i18n="ev.d2.pill">Day Two · Civil Wedding &amp; Blessing</span>
         <div class="event-day" data-i18n="ev.d2.day">Thursday, 17th December 2026</div>
         <div class="event-info" data-i18n="ev.d2.info">
@@ -1266,6 +1333,8 @@
         <span class="swatch-name">Champagne</span>
       </div>
     </div>
+
+    <img class="persona persona-dress reveal" src="img/couple/dress.webp" width="387" height="520" loading="lazy" alt="">
 
     <p class="dress-note reveal" data-i18n="dc.note">
       We kindly request that our guests wear formal attire
@@ -1349,7 +1418,8 @@
       home would be sincerely appreciated.
     </p>
 
-    <div class="account-box reveal">
+    <div class="account-box has-persona reveal">
+      <img class="persona persona-top gift" src="img/couple/gift.webp" width="203" height="320" loading="lazy" alt="">
       <p class="acct-lbl" data-i18n="gf.acct">Account Details</p>
       <p class="acct-number">671 271 166</p>
       <p class="acct-name">Charles Nkongho</p>
@@ -1362,6 +1432,8 @@
     <h2 class="section-title reveal" data-i18n="rs.title">Kindly RSVP</h2>
 
     <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
+
+    <img class="persona persona-letter reveal" src="img/couple/letter.webp" width="132" height="360" loading="lazy" alt="">
 
     <p class="rsvp-intro reveal" data-i18n="rs.intro">
       Please let us know if you'll be joining us so we can prepare
