@@ -1388,15 +1388,26 @@
       <p>Enquiries: <a href="tel:+237652957529">+237 6 52 95 75 29</a></p>
       <p>Pinorich Villa, Bonduma, Buea, Cameroon</p>
     </div>
-    <p class="footer-music">♪ 2 Corinthians 5:7 · Victor Thompson</p>
+    <p class="footer-music">♪ Playing softly in the background</p>
   </footer>
 
 </div><!-- end #main-site -->
 
-<button id="music-btn" class="off" title="Toggle background music" onclick="toggleMusic()">♪</button>
+<button id="music-btn" title="Mute / unmute music" onclick="toggleMusic()">
+  <svg id="icon-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+  </svg>
+  <svg id="icon-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <line x1="23" y1="9" x2="17" y2="15"/>
+    <line x1="17" y1="9" x2="23" y2="15"/>
+  </svg>
+</button>
 
-<audio id="bg-audio" loop preload="none">
-  <source src="music/victor-thompson-2cor5v7.mp3" type="audio/mpeg">
+<audio id="bg-audio" loop preload="auto">
+  <source src="music/background-sound.mp4" type="audio/mp4">
 </audio>
 
 <script>
@@ -1414,7 +1425,8 @@
       requestAnimationFrame(() => {
         requestAnimationFrame(() => main.classList.add('visible'));
       });
-      document.getElementById('music-btn').classList.add('show');
+      btn.classList.add('show');
+      startMusic();
       initReveal();
     }, 1100);
   }
@@ -1472,21 +1484,22 @@
   sections.forEach(s => secObs.observe(s));
 
   /* ═══ MUSIC ═══ */
-  let playing = false;
-  const audio  = document.getElementById('bg-audio');
-  const btn    = document.getElementById('music-btn');
+  const audio   = document.getElementById('bg-audio');
+  const btn     = document.getElementById('music-btn');
+  const iconOn  = document.getElementById('icon-on');
+  const iconOff = document.getElementById('icon-off');
+
+  function startMusic() {
+    audio.volume = 0.25;
+    audio.play().catch(() => {});
+    btn.classList.remove('off');
+  }
 
   function toggleMusic() {
-    if (playing) {
-      audio.pause();
-      btn.textContent = '♪';
-      btn.classList.add('off');
-    } else {
-      audio.play().catch(() => {});
-      btn.textContent = '♫';
-      btn.classList.remove('off');
-    }
-    playing = !playing;
+    audio.muted = !audio.muted;
+    iconOn.style.display  = audio.muted ? 'none'  : '';
+    iconOff.style.display = audio.muted ? ''      : 'none';
+    btn.classList.toggle('off', audio.muted);
   }
 
   /* ═══ RSVP ═══ */
