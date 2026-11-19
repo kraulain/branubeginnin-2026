@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Ebangha & Emmanuel — Branubeginnin 2026</title>
+  <title>Ebangha & Emmanuel · Branubeginnin 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Pinyon+Script&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -102,25 +102,23 @@
     .ornamental-rule {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 8px;
       justify-content: center;
       margin: 26px auto;
-      max-width: 240px;
     }
     .ornamental-rule::before,
     .ornamental-rule::after {
       content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--champagne) 30%, var(--champagne) 70%, transparent);
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--champagne-soft);
+      flex-shrink: 0;
     }
-    .ornamental-rule svg,
     .ornamental-rule .dot {
       flex-shrink: 0;
-      width: 10px; height: 10px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--champagne);
-      box-shadow: 0 0 0 4px var(--ivory), 0 0 0 5px var(--champagne);
     }
 
     .divider-eucalyptus {
@@ -194,7 +192,7 @@
 
     .env-stage {
       position: relative;
-      width: min(340px, 80vw);
+      width: min(520px, 90vw);
       cursor: pointer;
       user-select: none;
       perspective: 1200px;
@@ -539,15 +537,6 @@
       box-shadow: 0 10px 28px -16px rgba(78, 60, 40, 0.25);
       position: relative;
     }
-    .cd-box::before,
-    .cd-box::after {
-      content: '';
-      position: absolute;
-      width: 10px; height: 10px;
-      border: 1px solid var(--champagne);
-    }
-    .cd-box::before { top: 3px; left: 3px; border-right: none; border-bottom: none; }
-    .cd-box::after  { bottom: 3px; right: 3px; border-left: none; border-top: none; }
 
     .cd-lbl {
       font-family: 'Inter', sans-serif;
@@ -581,15 +570,6 @@
       position: relative;
       box-shadow: 0 20px 50px -30px rgba(78, 60, 40, 0.3);
     }
-    .event-card::before,
-    .event-card::after {
-      content: '';
-      position: absolute;
-      width: 22px; height: 22px;
-      border: 1px solid var(--champagne);
-    }
-    .event-card::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-    .event-card::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
 
     .event-pill {
       display: inline-block;
@@ -821,15 +801,6 @@
       position: relative;
       border: 1px solid var(--cream-deep);
     }
-    .account-box::before,
-    .account-box::after {
-      content: '';
-      position: absolute;
-      width: 22px; height: 22px;
-      border: 1px solid var(--champagne);
-    }
-    .account-box::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-    .account-box::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
 
     .acct-lbl {
       font-family: 'Inter', sans-serif;
@@ -1382,7 +1353,7 @@
       <div class="f-field">
         <label>Will you be attending? *</label>
         <select name="attending" required>
-          <option value="" disabled selected>— please select —</option>
+          <option value="" disabled selected>Select one</option>
           <option value="Yes — Blessing &amp; Reception (17th Dec)">Yes — Blessing &amp; Reception (17th Dec)</option>
           <option value="Yes — Both days (16th &amp; 17th Dec)">Yes — Both days (16th &amp; 17th Dec)</option>
           <option value="Regretfully unable to attend">Regretfully unable to attend</option>
