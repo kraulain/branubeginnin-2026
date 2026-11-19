@@ -354,29 +354,22 @@
       margin-bottom: 36px;
     }
 
+    /* monogram, matching the footer's E & E */
     .hero-names {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.14em;
       margin-bottom: 20px;
-    }
-    .hero-names .name {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(3.4rem, 15vw, 6rem);
-      color: var(--ink);
-      line-height: 0.95;
-      letter-spacing: -0.015em;
-    }
-    .hero-names .amp {
       font-family: 'Pinyon Script', cursive;
       font-weight: 400;
-      font-size: clamp(3.5rem, 14vw, 5.5rem);
+      font-size: clamp(6rem, 30vw, 9.5rem);
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .hero-names .amp {
+      font-size: 0.62em;
       color: var(--burgundy);
-      line-height: 1;
-      margin: -14px 0 -18px;
     }
 
     .hero-date {
@@ -1143,11 +1136,11 @@
 
     <p class="hero-eyebrow reveal">Branubeginnin · 2026</p>
 
-    <div class="hero-names reveal">
-      <span class="name">Ebangha</span>
-      <span class="amp">&amp;</span>
-      <span class="name">Emmanuel</span>
-    </div>
+    <h1 class="hero-names reveal" aria-label="Ebangha &amp; Emmanuel">
+      <span aria-hidden="true">E</span>
+      <span class="amp" aria-hidden="true">&amp;</span>
+      <span aria-hidden="true">E</span>
+    </h1>
 
     <p class="hero-date reveal">
       16 <span class="sep">·</span> 17 <span class="sep">·</span> <span data-i18n="hero.month">December 2026</span>
