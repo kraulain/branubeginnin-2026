@@ -1057,7 +1057,7 @@
   <p class="env-greeting">You are cordially invited</p>
   <p class="env-greeting-small">Ebangha &amp; Emmanuel · 2026</p>
 
-  <div class="env-stage" id="env-stage" role="button" tabindex="0" aria-label="Open invitation" onclick="openEnvelope()">
+  <div class="env-stage" id="env-stage" role="button" tabindex="0" aria-label="Open invitation">
     <img class="env-img-closed" src="img/envelope/envelope_closed.png" alt="Wedding invitation envelope">
   </div>
 
@@ -1411,48 +1411,66 @@
     'img/envelope/envelope_f5.png',
     'img/envelope/envelope_open.png',
   ];
-
-  // Frame durations in ms — slow start, faster middle, slow settle
   const FRAME_MS = [120, 80, 70, 70, 80, 120, 600];
 
-  // Preload all frames so playback is instant
-  const preloaded = FRAMES.map(src => { const i = new Image(); i.src = src; return i; });
+  // Silently preload all frames
+  FRAMES.forEach(src => { const p = new Image(); p.src = src; });
+
+  let envelopeOpened = false;
 
   function openEnvelope() {
+    if (envelopeOpened) return;
+    envelopeOpened = true;
+
     const stage  = document.getElementById('env-stage');
     const screen = document.getElementById('envelope-screen');
     const main   = document.getElementById('main-site');
-    const img    = stage.querySelector('.env-img-closed');
+    const img    = stage.querySelector('img');
 
-    // Disable re-triggering and stop breathing animation
     stage.style.pointerEvents = 'none';
     img.style.animation = 'none';
 
-    // Play through frames
-    let frame = 0;
-    function nextFrame() {
-      img.src = FRAMES[frame];
-      frame++;
-      if (frame < FRAMES.length) {
-        setTimeout(nextFrame, FRAME_MS[frame - 1]);
-      } else {
-        // All frames done — transition to main site
-        setTimeout(() => {
-          screen.classList.add('hidden');
-          main.removeAttribute('hidden');
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => main.classList.add('visible'));
-          });
-          btn.classList.add('show');
-          startMusic();
-          initReveal();
-        }, 500);
-      }
+    let frameIdx = 1;
+
+    function transitionToMain() {
+      setTimeout(() => {
+        screen.classList.add('hidden');
+        window.scrollTo(0, 0);       // prevent browser restoring a stale scroll pos
+        main.removeAttribute('hidden');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => main.classList.add('visible'));
+        });
+        btn.classList.add('show');
+        startMusic();
+        initReveal();
+      }, 400);
     }
-    nextFrame();
+
+    function tryNextFrame() {
+      if (frameIdx >= FRAMES.length) { transitionToMain(); return; }
+      const src  = FRAMES[frameIdx];
+      const test = new Image();
+      test.onload = () => {
+        img.src = src;
+        const delay = FRAME_MS[frameIdx] || 80;
+        frameIdx++;
+        setTimeout(tryNextFrame, delay);
+      };
+      test.onerror = () => {
+        // Frame doesn't exist yet — skip it, keep current frame visible
+        frameIdx++;
+        tryNextFrame();
+      };
+      test.src = src;
+    }
+
+    setTimeout(tryNextFrame, FRAME_MS[0]);
   }
 
-  document.getElementById('env-stage').addEventListener('keydown', e => {
+  const envStage = document.getElementById('env-stage');
+  envStage.addEventListener('touchend', e => { e.preventDefault(); openEnvelope(); }, { passive: false });
+  envStage.addEventListener('click', openEnvelope);
+  envStage.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); }
   });
 
