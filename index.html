@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Pinyon+Script&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="img/envelope/envelope_closed.png">
+  <link rel="preload" as="image" href="img/envelope/envelope_closed.webp">
   <style>
     /* ═══════════════════════════════════════
        TOKENS
@@ -192,7 +192,7 @@
 
     .env-stage {
       position: relative;
-      width: min(520px, 90vw);
+      width: min(640px, 94vw);
       cursor: pointer;
       user-select: none;
       perspective: 1200px;
@@ -1049,16 +1049,16 @@
 ══════════════════════════════════════ -->
 <div id="envelope-screen" class="paper-grain">
 
-  <img class="silver-frame-corner sfc-tl" src="img/ornaments/silver_corner.png" alt="">
-  <img class="silver-frame-corner sfc-tr" src="img/ornaments/silver_corner.png" alt="">
-  <img class="silver-frame-corner sfc-bl" src="img/ornaments/silver_corner.png" alt="">
-  <img class="silver-frame-corner sfc-br" src="img/ornaments/silver_corner.png" alt="">
+  <img class="silver-frame-corner sfc-tl" src="img/ornaments/silver_corner.webp" alt="">
+  <img class="silver-frame-corner sfc-tr" src="img/ornaments/silver_corner.webp" alt="">
+  <img class="silver-frame-corner sfc-bl" src="img/ornaments/silver_corner.webp" alt="">
+  <img class="silver-frame-corner sfc-br" src="img/ornaments/silver_corner.webp" alt="">
 
   <p class="env-greeting">You are cordially invited</p>
   <p class="env-greeting-small">Ebangha &amp; Emmanuel · 2026</p>
 
   <div class="env-stage" id="env-stage" role="button" tabindex="0" aria-label="Open invitation">
-    <img class="env-img-closed" src="img/envelope/envelope_closed.png" alt="Wedding invitation envelope">
+    <img class="env-img-closed" src="img/envelope/envelope_closed.webp" alt="Wedding invitation envelope">
   </div>
 
   <p class="env-hint">
@@ -1083,8 +1083,8 @@
 
   <!-- ── HERO ── -->
   <section id="hero" class="paper-grain">
-    <img class="hero-floral-tr" src="img/florals/corner_cluster.png" alt="">
-    <img class="hero-floral-bl" src="img/florals/corner_cluster.png" alt="">
+    <img class="hero-floral-tr" src="img/florals/corner_cluster.webp" alt="">
+    <img class="hero-floral-bl" src="img/florals/corner_cluster.webp" alt="">
 
     <p class="hero-eyebrow reveal">Branubeginnin · 2026</p>
 
@@ -1127,7 +1127,7 @@
       joyfully invite you to come celebrate<br>their marriage.
     </p>
 
-    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.png" alt="">
+    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
   </section>
 
   <!-- ── COUNTDOWN ── -->
@@ -1159,7 +1159,7 @@
     <p class="section-eyebrow reveal">Our Special Days</p>
     <h2 class="section-title reveal">The Celebration</h2>
 
-    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.png" alt="">
+    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
     <div class="event-cards">
 
@@ -1198,7 +1198,7 @@
     <p class="section-eyebrow reveal">Attire Guide</p>
     <h2 class="section-title reveal">Dress Code</h2>
 
-    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.png" alt="">
+    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
     <div class="swatches reveal">
       <div class="swatch-item">
@@ -1231,7 +1231,7 @@
     <p class="section-eyebrow reveal">Good to Know</p>
     <h2 class="section-title reveal">Finer Details</h2>
 
-    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.png" alt="">
+    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
     <div class="detail-cards">
 
@@ -1293,7 +1293,7 @@
     <p class="section-eyebrow reveal">Wedding Wishes</p>
     <h2 class="section-title reveal">Gifts &amp; Wishes</h2>
 
-    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.png" alt="">
+    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
     <p class="gift-text reveal">
       Your presence is more than enough.<br><br>
@@ -1313,7 +1313,7 @@
     <p class="section-eyebrow reveal">We can't wait to celebrate with you</p>
     <h2 class="section-title reveal">Kindly RSVP</h2>
 
-    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.png" alt="">
+    <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
     <p class="rsvp-intro reveal">
       Please let us know if you'll be joining us so we can prepare
@@ -1404,13 +1404,13 @@
 <script>
   /* ═══ ENVELOPE ═══ */
   const FRAMES = [
-    'img/envelope/envelope_closed.png',
-    'img/envelope/envelope_f1.png',
-    'img/envelope/envelope_f2.png',
-    'img/envelope/envelope_f3.png',
-    'img/envelope/envelope_f4.png',
-    'img/envelope/envelope_f5.png',
-    'img/envelope/envelope_open.png',
+    'img/envelope/envelope_closed.webp',
+    'img/envelope/envelope_f1.webp',
+    'img/envelope/envelope_f2.webp',
+    'img/envelope/envelope_f3.webp',
+    'img/envelope/envelope_f4.webp',
+    'img/envelope/envelope_f5.webp',
+    'img/envelope/envelope_open.webp',
   ];
   const FRAME_MS = [120, 80, 70, 70, 80, 120, 600];
 
