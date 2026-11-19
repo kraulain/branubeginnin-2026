@@ -1376,12 +1376,13 @@
     </p>
 
     <form class="rsvp-form reveal" id="rsvp-form"
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="https://script.google.com/macros/s/AKfycbxUUF3PdEDXfze405fzpKwk4nFJAQVVvm-3z-YXlg4Jj6_H3ptKhkLDhNVXGF-4bKcd/exec"
           method="POST"
           onsubmit="submitRSVP(event)">
 
-      <input type="hidden" name="_subject" value="RSVP — Ebangha & Emmanuel Wedding 🌿">
-      <input type="hidden" name="_replyto" value="">
+      <!-- spam trap: real guests never see or fill this -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"
+             style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <input type="hidden" name="language" id="rsvp-lang" value="en">
 
       <div class="f-field">
@@ -1767,13 +1768,15 @@
     btn.textContent = MSG[lang].sending;
 
     try {
+      // URL-encoded body keeps this a "simple" request: no CORS preflight,
+      // and Apps Script exposes the fields as e.parameter
       const res = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        body: new URLSearchParams(new FormData(form)),
       });
+      const data = await res.json().catch(() => ({}));
 
-      if (res.ok) {
+      if (res.ok && data.ok) {
         document.getElementById('rsvp-form').outerHTML = `
           <div class="rsvp-success">
             <div class="rsvp-success-icon">
