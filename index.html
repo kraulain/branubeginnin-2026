@@ -202,19 +202,11 @@
       width: 100%;
       height: auto;
       display: block;
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      animation: env-breath 5s ease-in-out infinite;
       filter:
         drop-shadow(0 22px 42px rgba(78, 60, 40, 0.25))
         drop-shadow(0 6px 14px rgba(78, 60, 40, 0.14));
     }
-    .env-stage .env-img-closed { animation: env-breath 5s ease-in-out infinite; }
-    .env-stage .env-img-open {
-      position: absolute; inset: 0;
-      opacity: 0;
-      transform: scale(1.02);
-    }
-    .env-stage.opening .env-img-closed { opacity: 0; transform: scale(0.97); animation: none; }
-    .env-stage.opening .env-img-open   { opacity: 1; transform: scale(1); }
 
     @keyframes env-breath {
       0%, 100% { transform: translateY(0) scale(1); }
@@ -1066,8 +1058,7 @@
   <p class="env-greeting-small">Ebangha &amp; Emmanuel · 2026</p>
 
   <div class="env-stage" id="env-stage" role="button" tabindex="0" aria-label="Open invitation" onclick="openEnvelope()">
-    <img class="env-img-closed" src="img/envelope/envelope_closed.png" alt="Sealed wedding invitation">
-    <img class="env-img-open"   src="img/envelope/envelope_open.png"   alt="Opened wedding invitation">
+    <img class="env-img-closed" src="img/envelope/envelope_closed.png" alt="Wedding invitation envelope">
   </div>
 
   <p class="env-hint">
@@ -1412,23 +1403,54 @@
 
 <script>
   /* ═══ ENVELOPE ═══ */
+  const FRAMES = [
+    'img/envelope/envelope_closed.png',
+    'img/envelope/envelope_f1.png',
+    'img/envelope/envelope_f2.png',
+    'img/envelope/envelope_f3.png',
+    'img/envelope/envelope_f4.png',
+    'img/envelope/envelope_f5.png',
+    'img/envelope/envelope_open.png',
+  ];
+
+  // Frame durations in ms — slow start, faster middle, slow settle
+  const FRAME_MS = [120, 80, 70, 70, 80, 120, 600];
+
+  // Preload all frames so playback is instant
+  const preloaded = FRAMES.map(src => { const i = new Image(); i.src = src; return i; });
+
   function openEnvelope() {
     const stage  = document.getElementById('env-stage');
     const screen = document.getElementById('envelope-screen');
     const main   = document.getElementById('main-site');
+    const img    = stage.querySelector('.env-img-closed');
 
-    stage.classList.add('opening');
+    // Disable re-triggering and stop breathing animation
+    stage.style.pointerEvents = 'none';
+    img.style.animation = 'none';
 
-    setTimeout(() => {
-      screen.classList.add('hidden');
-      main.removeAttribute('hidden');
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => main.classList.add('visible'));
-      });
-      btn.classList.add('show');
-      startMusic();
-      initReveal();
-    }, 1100);
+    // Play through frames
+    let frame = 0;
+    function nextFrame() {
+      img.src = FRAMES[frame];
+      frame++;
+      if (frame < FRAMES.length) {
+        setTimeout(nextFrame, FRAME_MS[frame - 1]);
+      } else {
+        // All frames done — transition to main site
+        setTimeout(() => {
+          screen.classList.add('hidden');
+          main.removeAttribute('hidden');
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => main.classList.add('visible'));
+          });
+          btn.classList.add('show');
+          startMusic();
+          initReveal();
+        }, 500);
+      }
+    }
+    nextFrame();
   }
 
   document.getElementById('env-stage').addEventListener('keydown', e => {
