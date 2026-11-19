@@ -1,4 +1,10 @@
 /**
+ * @OnlyCurrentDoc
+ * Limits the script to the spreadsheet it is attached to; it cannot open
+ * any other file in your Drive.
+ */
+
+/**
  * RSVP receiver for branubeginnin.love
  *
  * Setup:
@@ -12,6 +18,11 @@
  * After editing this script, use Deploy → Manage deployments → Edit →
  * Version: "New version" so the same URL serves the new code.
  */
+
+// Who gets an email for each RSVP. Comma-separate several addresses,
+// or leave empty ('') to send no emails. Emails are sent from the Google
+// account that deployed the script; replying goes straight to the guest.
+const NOTIFY_TO = '';
 
 const SHEET_NAME = 'RSVPs';
 const FIELDS  = ['name', 'email', 'phone', 'attending', 'guests', 'message', 'language'];
@@ -40,9 +51,29 @@ function doPost(e) {
     }
 
     sheet.appendRow([new Date()].concat(FIELDS.map(f => clean(p[f]))));
-    return json({ ok: true });
   } finally {
     lock.releaseLock();
+  }
+
+  notify(p);
+  return json({ ok: true });
+}
+
+// The row is already saved, so a failed email must not fail the RSVP
+function notify(p) {
+  if (!NOTIFY_TO) return;
+  try {
+    const lines = FIELDS.map((f, i) => HEADERS[i + 1] + ': ' + (String(p[f] || '').trim() || '—'));
+    const mail = {
+      to: NOTIFY_TO,
+      subject: 'New RSVP: ' + String(p.name).trim() + ' (' + (p.guests || '1') + ')',
+      body: lines.join('\n') + '\n\nAll RSVPs: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl(),
+    };
+    const email = String(p.email).trim();
+    if (/^[^\s@]+@[^\s@]+$/.test(email)) mail.replyTo = email;
+    MailApp.sendEmail(mail);
+  } catch (err) {
+    console.error('RSVP email failed: ' + err);
   }
 }
 
