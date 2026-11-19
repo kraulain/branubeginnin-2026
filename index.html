@@ -21,6 +21,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Ebangha & Emmanuel · 16–17 December 2026 · Buea, Cameroon">
   <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="fr_FR">
 
   <!-- X / Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -1048,6 +1049,36 @@
     #music-btn:hover { background: var(--burgundy); color: var(--ivory); transform: scale(1.05); }
     #music-btn.off { opacity: 0.6; }
 
+    /* language switcher — sits above the envelope screen too */
+    #lang-switch {
+      position: fixed;
+      bottom: 24px; left: 24px;
+      z-index: 1001;
+      display: flex;
+      background: var(--white);
+      border: 1px solid var(--champagne);
+      border-radius: 999px;
+      padding: 3px;
+      box-shadow: 0 10px 30px -10px rgba(78, 60, 40, 0.3);
+    }
+    #lang-switch button {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      padding: 9px 12px 9px 14px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-soft);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    #lang-switch button[aria-pressed="true"] {
+      background: var(--burgundy);
+      color: var(--ivory);
+    }
+
     /* ═══════════════════════════════════════
        RESPONSIVE
     ═══════════════════════════════════════ */
@@ -1078,15 +1109,15 @@
   <img class="silver-frame-corner sfc-bl" src="img/ornaments/silver_corner.webp" alt="">
   <img class="silver-frame-corner sfc-br" src="img/ornaments/silver_corner.webp" alt="">
 
-  <p class="env-greeting">You are cordially invited</p>
+  <p class="env-greeting" data-i18n="env.greeting">You are cordially invited</p>
   <p class="env-greeting-small">Ebangha &amp; Emmanuel · 2026</p>
 
-  <div class="env-stage" id="env-stage" role="button" tabindex="0" aria-label="Open invitation">
-    <img class="env-img-closed" src="img/envelope/envelope_closed.webp" alt="Wedding invitation envelope">
+  <div class="env-stage" id="env-stage" role="button" tabindex="0" aria-label="Open invitation" data-i18n-aria="env.open">
+    <img class="env-img-closed" src="img/envelope/envelope_closed.webp" alt="Wedding invitation envelope" data-i18n-alt="env.alt">
   </div>
 
   <p class="env-hint">
-    Tap envelope to open
+    <span data-i18n="env.hint">Tap envelope to open</span>
     <span class="bounce" aria-hidden="true"></span>
   </p>
 </div>
@@ -1097,11 +1128,11 @@
 <div id="main-site" hidden>
 
   <nav id="top-nav">
-    <a href="#hero">Home</a>
-    <a href="#events">Events</a>
-    <a href="#dress-code">Attire</a>
-    <a href="#details">Details</a>
-    <a href="#gifts">Gifts</a>
+    <a href="#hero" data-i18n="nav.home">Home</a>
+    <a href="#events" data-i18n="nav.events">Events</a>
+    <a href="#dress-code" data-i18n="nav.attire">Attire</a>
+    <a href="#details" data-i18n="nav.details">Details</a>
+    <a href="#gifts" data-i18n="nav.gifts">Gifts</a>
     <a href="#rsvp">RSVP</a>
   </nav>
 
@@ -1119,25 +1150,25 @@
     </div>
 
     <p class="hero-date reveal">
-      16 <span class="sep">·</span> 17 <span class="sep">·</span> December 2026
+      16 <span class="sep">·</span> 17 <span class="sep">·</span> <span data-i18n="hero.month">December 2026</span>
     </p>
 
     <div class="ornamental-rule reveal"><span class="dot"></span></div>
 
     <p class="hero-verse reveal">
-      "For we walk by faith, not by sight."
-      <cite>2 Corinthians 5:7</cite>
+      <span data-i18n="hero.verse">"For we walk by faith, not by sight."</span>
+      <cite data-i18n="hero.cite">2 Corinthians 5:7</cite>
     </p>
 
     <div class="scroll-hint">
-      <span>Scroll</span>
+      <span data-i18n="hero.scroll">Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
   <!-- ── INVITATION ── -->
   <section id="invitation" class="paper-grain">
-    <p class="section-eyebrow reveal">Together with their families</p>
+    <p class="section-eyebrow reveal" data-i18n="inv.eyebrow">Together with their families</p>
 
     <div class="invite-couple reveal">
       Ebangha Ayukachale
@@ -1147,7 +1178,7 @@
 
     <div class="ornamental-rule reveal"><span class="dot"></span></div>
 
-    <p class="invite-text reveal">
+    <p class="invite-text reveal" data-i18n="inv.text">
       joyfully invite you to come celebrate<br>their marriage.
     </p>
 
@@ -1156,60 +1187,60 @@
 
   <!-- ── COUNTDOWN ── -->
   <section id="countdown" class="paper-grain">
-    <p class="cd-script reveal">See you in…</p>
-    <p class="cd-sub reveal">until our lifetime together begins</p>
+    <p class="cd-script reveal" data-i18n="cd.script">See you in…</p>
+    <p class="cd-sub reveal" data-i18n="cd.sub">until our lifetime together begins</p>
     <div class="cd-grid reveal">
       <div class="cd-unit">
         <div class="cd-box" id="cd-d">--</div>
-        <span class="cd-lbl">Days</span>
+        <span class="cd-lbl" data-i18n="cd.days">Days</span>
       </div>
       <div class="cd-unit">
         <div class="cd-box" id="cd-h">--</div>
-        <span class="cd-lbl">Hours</span>
+        <span class="cd-lbl" data-i18n="cd.hours">Hours</span>
       </div>
       <div class="cd-unit">
         <div class="cd-box" id="cd-m">--</div>
-        <span class="cd-lbl">Mins</span>
+        <span class="cd-lbl" data-i18n="cd.mins">Mins</span>
       </div>
       <div class="cd-unit">
         <div class="cd-box" id="cd-s">--</div>
-        <span class="cd-lbl">Secs</span>
+        <span class="cd-lbl" data-i18n="cd.secs">Secs</span>
       </div>
     </div>
   </section>
 
   <!-- ── EVENTS ── -->
   <section id="events" class="paper-grain">
-    <p class="section-eyebrow reveal">Our Special Days</p>
-    <h2 class="section-title reveal">The Celebration</h2>
+    <p class="section-eyebrow reveal" data-i18n="ev.eyebrow">Our Special Days</p>
+    <h2 class="section-title reveal" data-i18n="ev.title">The Celebration</h2>
 
     <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
     <div class="event-cards">
 
       <div class="event-card reveal">
-        <span class="event-pill">Day One · Traditional Wedding</span>
-        <div class="event-day">Wednesday, 16th December 2026</div>
-        <div class="event-info">
+        <span class="event-pill" data-i18n="ev.d1.pill">Day One · Traditional Wedding</span>
+        <div class="event-day" data-i18n="ev.d1.day">Wednesday, 16th December 2026</div>
+        <div class="event-info" data-i18n="ev.d1.info">
           <strong>Time</strong> 4:00 PM<br>
           G.R.A Buea<br>
           Bride's Father's Residence
         </div>
-        <div class="event-note">
+        <div class="event-note" data-i18n="ev.d1.note">
           This ceremony is an intimate gathering strictly reserved for close family members.
           We look forward to celebrating with you at the blessing &amp; reception.
         </div>
       </div>
 
       <div class="event-card reveal">
-        <span class="event-pill">Day Two · Civil Wedding &amp; Blessing</span>
-        <div class="event-day">Thursday, 17th December 2026</div>
-        <div class="event-info">
+        <span class="event-pill" data-i18n="ev.d2.pill">Day Two · Civil Wedding &amp; Blessing</span>
+        <div class="event-day" data-i18n="ev.d2.day">Thursday, 17th December 2026</div>
+        <div class="event-info" data-i18n="ev.d2.info">
           <strong>Reception</strong> 3:00 PM<br>
           Pinorich Villa<br>
           Bonduma, Buea
         </div>
-        <a href="https://maps.google.com/?q=Bonduma+Buea+Cameroon" target="_blank" rel="noopener" class="map-btn">
+        <a href="https://maps.google.com/?q=Bonduma+Buea+Cameroon" target="_blank" rel="noopener" class="map-btn" data-i18n="ev.map">
           View on Map
         </a>
       </div>
@@ -1219,23 +1250,23 @@
 
   <!-- ── DRESS CODE ── -->
   <section id="dress-code" class="paper-grain">
-    <p class="section-eyebrow reveal">Attire Guide</p>
-    <h2 class="section-title reveal">Dress Code</h2>
+    <p class="section-eyebrow reveal" data-i18n="dc.eyebrow">Attire Guide</p>
+    <h2 class="section-title reveal" data-i18n="dc.title">Dress Code</h2>
 
     <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
     <div class="swatches reveal">
       <div class="swatch-item">
         <div class="swatch-ring"><div class="swatch-dot sage"></div></div>
-        <span class="swatch-name">Sage</span>
+        <span class="swatch-name" data-i18n="dc.sage">Sage</span>
       </div>
       <div class="swatch-item">
         <div class="swatch-ring"><div class="swatch-dot blush"></div></div>
-        <span class="swatch-name">Blush</span>
+        <span class="swatch-name" data-i18n="dc.blush">Blush</span>
       </div>
       <div class="swatch-item">
         <div class="swatch-ring"><div class="swatch-dot ivory"></div></div>
-        <span class="swatch-name">Ivory</span>
+        <span class="swatch-name" data-i18n="dc.ivory">Ivory</span>
       </div>
       <div class="swatch-item">
         <div class="swatch-ring"><div class="swatch-dot champagne"></div></div>
@@ -1243,7 +1274,7 @@
       </div>
     </div>
 
-    <p class="dress-note reveal">
+    <p class="dress-note reveal" data-i18n="dc.note">
       We kindly request that our guests wear formal attire
       in our wedding colours.<br><br>
       Please <em>refrain from wearing white</em>.
@@ -1252,8 +1283,8 @@
 
   <!-- ── FINER DETAILS ── -->
   <section id="details" class="paper-grain">
-    <p class="section-eyebrow reveal">Good to Know</p>
-    <h2 class="section-title reveal">Finer Details</h2>
+    <p class="section-eyebrow reveal" data-i18n="fd.eyebrow">Good to Know</p>
+    <h2 class="section-title reveal" data-i18n="fd.title">Finer Details</h2>
 
     <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
@@ -1268,8 +1299,8 @@
           </svg>
         </div>
         <div class="dc-body-wrap">
-          <div class="dc-title">Entry by Invitation</div>
-          <p class="dc-body">
+          <div class="dc-title" data-i18n="fd.entry.t">Entry by Invitation</div>
+          <p class="dc-body" data-i18n="fd.entry.b">
             For a seamless experience, entry will be strictly for guests with a valid invitation.
             We appreciate your understanding.
           </p>
@@ -1286,8 +1317,8 @@
           </svg>
         </div>
         <div class="dc-body-wrap">
-          <div class="dc-title">Plus-Ones</div>
-          <p class="dc-body">
+          <div class="dc-title" data-i18n="fd.plus.t">Plus-Ones</div>
+          <p class="dc-body" data-i18n="fd.plus.b">
             Due to limited seating, we kindly ask that you attend with only the guest(s)
             named on your invitation. Thank you for understanding.
           </p>
@@ -1301,8 +1332,8 @@
           </svg>
         </div>
         <div class="dc-body-wrap">
-          <div class="dc-title">Enquiries</div>
-          <p class="dc-body">
+          <div class="dc-title" data-i18n="fd.enq.t">Enquiries</div>
+          <p class="dc-body" data-i18n="fd.enq.b">
             For more information, please reach us at
             <a href="tel:+237652957529">+237 6 52 95 75 29</a>
           </p>
@@ -1314,19 +1345,19 @@
 
   <!-- ── GIFTS ── -->
   <section id="gifts" class="paper-grain">
-    <p class="section-eyebrow reveal">Wedding Wishes</p>
-    <h2 class="section-title reveal">Gifts &amp; Wishes</h2>
+    <p class="section-eyebrow reveal" data-i18n="gf.eyebrow">Wedding Wishes</p>
+    <h2 class="section-title reveal" data-i18n="gf.title">Gifts &amp; Wishes</h2>
 
     <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
-    <p class="gift-text reveal">
+    <p class="gift-text reveal" data-i18n="gf.text">
       Your presence is more than enough.<br><br>
       However, if you'd like to honour us with a gift, monetary gifts towards our
       home would be sincerely appreciated.
     </p>
 
     <div class="account-box reveal">
-      <p class="acct-lbl">Account Details</p>
+      <p class="acct-lbl" data-i18n="gf.acct">Account Details</p>
       <p class="acct-number">671 271 166</p>
       <p class="acct-name">Charles Nkongho</p>
     </div>
@@ -1334,12 +1365,12 @@
 
   <!-- ── RSVP ── -->
   <section id="rsvp" class="paper-grain">
-    <p class="section-eyebrow reveal">We can't wait to celebrate with you</p>
-    <h2 class="section-title reveal">Kindly RSVP</h2>
+    <p class="section-eyebrow reveal" data-i18n="rs.eyebrow">We can't wait to celebrate with you</p>
+    <h2 class="section-title reveal" data-i18n="rs.title">Kindly RSVP</h2>
 
     <img class="divider-eucalyptus reveal" src="img/florals/divider_eucalyptus.webp" alt="">
 
-    <p class="rsvp-intro reveal">
+    <p class="rsvp-intro reveal" data-i18n="rs.intro">
       Please let us know if you'll be joining us so we can prepare
       a place especially for you.
     </p>
@@ -1351,45 +1382,44 @@
 
       <input type="hidden" name="_subject" value="RSVP — Ebangha & Emmanuel Wedding 🌿">
       <input type="hidden" name="_replyto" value="">
+      <input type="hidden" name="language" id="rsvp-lang" value="en">
 
       <div class="f-field">
-        <label>Full Name *</label>
-        <input type="text" name="name" placeholder="Your full name" required>
+        <label data-i18n="rs.name">Full Name *</label>
+        <input type="text" name="name" placeholder="Your full name" data-i18n-ph="rs.name.ph" required>
       </div>
       <div class="f-field">
-        <label>Email address *</label>
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label data-i18n="rs.email">Email address *</label>
+        <input type="email" name="email" placeholder="your@email.com" data-i18n-ph="rs.email.ph" required>
       </div>
       <div class="f-field">
-        <label>Phone / WhatsApp</label>
+        <label data-i18n="rs.phone">Phone / WhatsApp</label>
         <input type="tel" name="phone" placeholder="+237 …">
       </div>
       <div class="f-field">
-        <label>Which events will you attend? *</label>
+        <label data-i18n="rs.events">Which events will you attend? *</label>
         <select name="attending" required>
-          <option value="" disabled selected>Select one</option>
-          <option value="Blessing &amp; Reception, 17th Dec">Blessing &amp; Reception, 17th Dec</option>
-          <option value="Both days, 16th and 17th Dec">Both days, 16th and 17th Dec</option>
+          <option value="" disabled selected data-i18n="rs.select">Select one</option>
+          <option value="Blessing &amp; Reception, 17th Dec" data-i18n="rs.opt.d2">Blessing &amp; Reception, 17th Dec</option>
+          <option value="Both days, 16th and 17th Dec" data-i18n="rs.opt.both">Both days, 16th and 17th Dec</option>
         </select>
       </div>
       <div class="f-field">
-        <label>Number of guests (including yourself)</label>
+        <label data-i18n="rs.guests">Number of guests (including yourself)</label>
         <select name="guests">
-          <option value="1">Just me (1)</option>
-          <option value="2">2 guests</option>
-          <option value="3">3 guests</option>
+          <option value="1" data-i18n="rs.g1">Just me (1)</option>
+          <option value="2" data-i18n="rs.g2">2 guests</option>
+          <option value="3" data-i18n="rs.g3">3 guests</option>
         </select>
       </div>
       <div class="f-field">
-        <label>Message to the couple (optional)</label>
-        <textarea name="message" placeholder="Leave them a note or a blessing…"></textarea>
+        <label data-i18n="rs.msg">Message to the couple (optional)</label>
+        <textarea name="message" placeholder="Leave them a note or a blessing…" data-i18n-ph="rs.msg.ph"></textarea>
       </div>
-      <button type="submit" class="rsvp-submit" id="rsvp-btn">
-        Send RSVP
-      </button>
+      <button type="submit" class="rsvp-submit" id="rsvp-btn" data-i18n="rs.send">Send RSVP</button>
     </form>
 
-    <p class="rsvp-note">
+    <p class="rsvp-note" data-i18n="rs.note">
       For enquiries contact us at <a href="tel:+237652957529">+237 6 52 95 75 29</a>
     </p>
   </section>
@@ -1397,18 +1427,18 @@
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-mono">E &amp; E</div>
-    <p class="footer-tag">Branubeginnin · 17 December 2026 · Buea</p>
+    <p class="footer-tag" data-i18n="ft.tag">Branubeginnin · 17 December 2026 · Buea</p>
     <div class="footer-info">
-      <p>Enquiries: <a href="tel:+237652957529">+237 6 52 95 75 29</a></p>
+      <p data-i18n="ft.enq">Enquiries: <a href="tel:+237652957529">+237 6 52 95 75 29</a></p>
       <p>Pinorich Villa, Bonduma, Buea, Cameroon</p>
     </div>
-    <p class="footer-music">♪ Playing softly in the background</p>
-    <p class="footer-music" style="margin-top:10px;font-size:0.72rem;opacity:0.45;">Music used for personal, non-commercial purposes only. All rights belong to the respective artist and rights holders.</p>
+    <p class="footer-music" data-i18n="ft.music">♪ Playing softly in the background</p>
+    <p class="footer-music" data-i18n="ft.rights" style="margin-top:10px;font-size:0.72rem;opacity:0.45;">Music used for personal, non-commercial purposes only. All rights belong to the respective artist and rights holders.</p>
   </footer>
 
 </div><!-- end #main-site -->
 
-<button id="music-btn" title="Mute / unmute music" onclick="toggleMusic()">
+<button id="music-btn" title="Mute / unmute music" data-i18n-title="music.toggle" onclick="toggleMusic()">
   <svg id="icon-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
     <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
@@ -1421,11 +1451,172 @@
   </svg>
 </button>
 
+<div id="lang-switch" role="group" aria-label="Language / Langue">
+  <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+  <button type="button" data-lang="fr" lang="fr" aria-pressed="false">FR</button>
+</div>
+
 <audio id="bg-audio" loop preload="auto">
   <source src="music/background-loop.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+  /* ═══ LANGUAGE ═══ */
+  // English lives in the HTML itself; French overrides it by key.
+  const FR = {
+    'env.greeting': 'Vous êtes cordialement invités',
+    'env.open':     'Ouvrir l’invitation',
+    'env.alt':      'Enveloppe de l’invitation de mariage',
+    'env.hint':     'Touchez l’enveloppe pour l’ouvrir',
+
+    'nav.home':    'Accueil',
+    'nav.events':  'Programme',
+    'nav.attire':  'Tenue',
+    'nav.details': 'Infos',
+    'nav.gifts':   'Cadeaux',
+
+    'hero.month':  'Décembre 2026',
+    'hero.verse':  '« Car nous marchons par la foi et non par la vue. »',
+    'hero.cite':   '2 Corinthiens 5:7',
+    'hero.scroll': 'Défiler',
+
+    'inv.eyebrow': 'Avec leurs familles',
+    'inv.text':    'ont la joie de vous inviter à célébrer<br>leur mariage.',
+
+    'cd.script': 'Rendez-vous dans…',
+    'cd.sub':    'avant le début de notre vie à deux',
+    'cd.days':   'Jours',
+    'cd.hours':  'Heures',
+    'cd.mins':   'Min',
+    'cd.secs':   'Sec',
+
+    'ev.eyebrow': 'Nos jours spéciaux',
+    'ev.title':   'La Célébration',
+    'ev.d1.pill': 'Jour 1 · Mariage traditionnel',
+    'ev.d1.day':  'Mercredi 16 décembre 2026',
+    'ev.d1.info': '<strong>Heure</strong> 16h00<br>G.R.A Buea<br>Résidence du père de la mariée',
+    'ev.d1.note': 'Cette cérémonie est un moment intime strictement réservé aux membres proches de la famille. Nous avons hâte de célébrer avec vous lors de la bénédiction &amp; de la réception.',
+    'ev.d2.pill': 'Jour 2 · Mariage civil &amp; bénédiction',
+    'ev.d2.day':  'Jeudi 17 décembre 2026',
+    'ev.d2.info': '<strong>Réception</strong> 15h00<br>Pinorich Villa<br>Bonduma, Buea',
+    'ev.map':     'Voir sur la carte',
+
+    'dc.eyebrow': 'Guide vestimentaire',
+    'dc.title':   'Code vestimentaire',
+    'dc.sage':    'Sauge',
+    'dc.blush':   'Rose poudré',
+    'dc.ivory':   'Ivoire',
+    'dc.note':    'Nous prions nos invités de porter une tenue de soirée aux couleurs de notre mariage.<br><br>Merci de <em>ne pas porter de blanc</em>.',
+
+    'fd.eyebrow': 'Bon à savoir',
+    'fd.title':   'Informations pratiques',
+    'fd.entry.t': 'Entrée sur invitation',
+    'fd.entry.b': 'Pour le bon déroulement de l’événement, l’entrée sera strictement réservée aux invités munis d’une invitation valide. Merci de votre compréhension.',
+    'fd.plus.t':  'Accompagnants',
+    'fd.plus.b':  'En raison du nombre de places limité, nous vous prions de venir uniquement avec la ou les personne(s) mentionnée(s) sur votre invitation. Merci de votre compréhension.',
+    'fd.enq.t':   'Renseignements',
+    'fd.enq.b':   'Pour plus d’informations, contactez-nous au <a href="tel:+237652957529">+237 6 52 95 75 29</a>',
+
+    'gf.eyebrow': 'Vœux de mariage',
+    'gf.title':   'Cadeaux &amp; vœux',
+    'gf.text':    'Votre présence est le plus beau des cadeaux.<br><br>Toutefois, si vous souhaitez nous honorer d’un présent, une contribution financière pour notre foyer sera sincèrement appréciée.',
+    'gf.acct':    'Coordonnées du compte',
+
+    'rs.eyebrow':  'Nous avons hâte de célébrer avec vous',
+    'rs.title':    'Confirmez votre présence',
+    'rs.intro':    'Merci de nous faire savoir si vous serez des nôtres afin que nous puissions vous réserver une place.',
+    'rs.name':     'Nom complet *',
+    'rs.name.ph':  'Votre nom complet',
+    'rs.email':    'Adresse e-mail *',
+    'rs.email.ph': 'votre@email.com',
+    'rs.phone':    'Téléphone / WhatsApp',
+    'rs.events':   'À quels événements assisterez-vous&nbsp;? *',
+    'rs.select':   'Sélectionnez une option',
+    'rs.opt.d2':   'Bénédiction &amp; réception, 17 déc.',
+    'rs.opt.both': 'Les deux jours, 16 et 17 déc.',
+    'rs.guests':   'Nombre d’invités (vous compris)',
+    'rs.g1':       'Moi seul(e) (1)',
+    'rs.g2':       '2 invités',
+    'rs.g3':       '3 invités',
+    'rs.msg':      'Message aux mariés (facultatif)',
+    'rs.msg.ph':   'Laissez-leur un mot ou une bénédiction…',
+    'rs.send':     'Envoyer ma réponse',
+    'rs.note':     'Pour tout renseignement, contactez-nous au <a href="tel:+237652957529">+237 6 52 95 75 29</a>',
+
+    'ft.tag':    'Branubeginnin · 17 décembre 2026 · Buea',
+    'ft.enq':    'Renseignements&nbsp;: <a href="tel:+237652957529">+237 6 52 95 75 29</a>',
+    'ft.music':  '♪ Musique douce en arrière-plan',
+    'ft.rights': 'Musique utilisée à des fins personnelles et non commerciales uniquement. Tous les droits appartiennent à l’artiste et aux ayants droit respectifs.',
+
+    'music.toggle': 'Couper / activer la musique',
+  };
+
+  // Strings only set from script, so they need both languages here
+  const MSG = {
+    en: {
+      sending:  'Sending…',
+      send:     'Send RSVP',
+      thanks:   'Thank you',
+      received: 'We\'ve received your RSVP.<br>We can\'t wait to celebrate with you.',
+      error:    'Something went wrong. Please try again or contact us directly.',
+      offline:  'Could not connect. Please try again or contact us directly.',
+    },
+    fr: {
+      sending:  'Envoi…',
+      send:     'Envoyer ma réponse',
+      thanks:   'Merci',
+      received: 'Nous avons bien reçu votre réponse.<br>Nous avons hâte de célébrer avec vous.',
+      error:    'Une erreur s’est produite. Veuillez réessayer ou nous contacter directement.',
+      offline:  'Connexion impossible. Veuillez réessayer ou nous contacter directement.',
+    },
+  };
+
+  const I18N_ATTRS = { i18n: 'innerHTML', i18nPh: 'placeholder', i18nAria: 'aria-label', i18nAlt: 'alt', i18nTitle: 'title' };
+  let lang = 'en';
+
+  function setLang(next) {
+    lang = next === 'fr' ? 'fr' : 'en';
+    document.documentElement.lang = lang;
+
+    Object.entries(I18N_ATTRS).forEach(([key, prop]) => {
+      const attr = 'data-' + key.replace(/[A-Z]/g, c => '-' + c.toLowerCase());
+      document.querySelectorAll('[' + attr + ']').forEach(el => {
+        const store = 'en' + key[0].toUpperCase() + key.slice(1);
+        const read  = () => prop === 'innerHTML' ? el.innerHTML : el.getAttribute(prop);
+        if (el.dataset[store] === undefined) el.dataset[store] = read();   // remember the English
+        const text = lang === 'fr' ? FR[el.dataset[key]] : el.dataset[store];
+        if (text === undefined) return;
+        if (prop === 'innerHTML') el.innerHTML = text; else el.setAttribute(prop, text);
+      });
+    });
+
+    const langField = document.getElementById('rsvp-lang');
+    if (langField) langField.value = lang;
+    document.querySelectorAll('#lang-switch button').forEach(b =>
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  }
+
+  function detectLang() {
+    try {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'en' || saved === 'fr') return saved;
+    } catch {}
+    const prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for (const l of prefs) {
+      const code = String(l).toLowerCase().slice(0, 2);
+      if (code === 'fr' || code === 'en') return code;
+    }
+    return 'en';
+  }
+
+  document.querySelectorAll('#lang-switch button').forEach(b =>
+    b.addEventListener('click', () => {
+      setLang(b.dataset.lang);
+      try { localStorage.setItem('lang', lang); } catch {}
+    }));
+
+  setLang(detectLang());
+
   /* ═══ ENVELOPE ═══ */
   const FRAMES = [
     'img/envelope/envelope_closed.webp',
@@ -1573,7 +1764,7 @@
     const btn  = document.getElementById('rsvp-btn');
 
     btn.disabled = true;
-    btn.textContent = 'Sending…';
+    btn.textContent = MSG[lang].sending;
 
     try {
       const res = await fetch(form.action, {
@@ -1590,18 +1781,18 @@
                 <path d="M5 12l4 4L19 7"/>
               </svg>
             </div>
-            <h3>Thank you</h3>
-            <p>We've received your RSVP.<br>We can't wait to celebrate with you.</p>
+            <h3>${MSG[lang].thanks}</h3>
+            <p>${MSG[lang].received}</p>
           </div>`;
       } else {
         btn.disabled = false;
-        btn.textContent = 'Send RSVP';
-        alert('Something went wrong. Please try again or contact us directly.');
+        btn.textContent = MSG[lang].send;
+        alert(MSG[lang].error);
       }
     } catch {
       btn.disabled = false;
-      btn.textContent = 'Send RSVP';
-      alert('Could not connect. Please try again or contact us directly.');
+      btn.textContent = MSG[lang].send;
+      alert(MSG[lang].offline);
     }
   }
 </script>
