@@ -34,7 +34,7 @@ function doPost(e) {
   // Spam trap filled → pretend success, store nothing
   if (p.website) return json({ ok: true });
 
-  if (!p.name || !p.email || !p.attending) {
+  if (!p.name || !p.attending) {
     return json({ ok: false, error: 'missing_fields' });
   }
 
