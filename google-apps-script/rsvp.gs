@@ -22,7 +22,7 @@
 // Who gets an email for each RSVP. Comma-separate several addresses,
 // or leave empty ('') to send no emails. Emails are sent from the Google
 // account that deployed the script; replying goes straight to the guest.
-const NOTIFY_TO = '';
+const NOTIFY_TO = 'falaketohson@gmail.com';
 
 const SHEET_NAME = 'RSVPs';
 const FIELDS  = ['name', 'email', 'phone', 'attending', 'guests', 'message', 'language'];

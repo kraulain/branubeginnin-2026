@@ -968,7 +968,7 @@
     ═══════════════════════════════════════ */
     footer {
       background: var(--sage-dark);
-      padding: 78px 28px 52px;
+      padding: 78px 28px 104px;     /* room for the fixed language/music buttons */
       text-align: center;
       color: var(--ivory);
       position: relative;
@@ -1009,6 +1009,26 @@
       position: relative;
     }
     .footer-info a { color: var(--champagne-soft); text-decoration: none; border-bottom: 1px solid rgba(232, 215, 179, 0.4); }
+    .footer-credit {
+      margin-top: 36px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(251, 248, 242, 0.6);
+      position: relative;
+    }
+    .footer-credit a {
+      color: var(--champagne-soft);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201, 169, 118, 0.4);
+      text-transform: none;
+      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+    }
+    .footer-credit a:hover { color: var(--ivory); }
+    .footer-credit .heart { color: var(--blush); }
+
     .footer-music {
       margin-top: 32px;
       font-family: 'Cormorant Garamond', serif;
@@ -1500,6 +1520,7 @@
     </div>
     <p class="footer-music" data-i18n="ft.music">♪ Playing softly in the background</p>
     <p class="footer-music" data-i18n="ft.rights" style="margin-top:10px;font-size:0.72rem;opacity:0.45;">Music used for personal, non-commercial purposes only. All rights belong to the respective artist and rights holders.</p>
+    <p class="footer-credit" data-i18n="ft.credit">© 2026 · Made with <span class="heart">♥</span> by <a href="https://kraulain.com" target="_blank" rel="noopener">Kraulain OÜ</a></p>
   </footer>
 
 </div><!-- end #main-site -->
@@ -1613,6 +1634,8 @@
     'ft.enq':    'Renseignements&nbsp;: <a href="tel:+237652957529">+237 6 52 95 75 29</a>',
     'ft.music':  '♪ Musique douce en arrière-plan',
     'ft.rights': 'Musique utilisée à des fins personnelles et non commerciales uniquement. Tous les droits appartiennent à l’artiste et aux ayants droit respectifs.',
+
+    'ft.credit': '© 2026 · Fait avec <span class="heart">♥</span> par <a href="https://kraulain.com" target="_blank" rel="noopener">Kraulain OÜ</a>',
 
     'music.toggle': 'Couper / activer la musique',
   };
